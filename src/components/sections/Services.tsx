@@ -1,118 +1,323 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Globe, Smartphone, BrainCircuit } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
     id: "web",
-    title: "Web Engineering",
-    description: "High-performance, scalable web applications engineered to drive conversion and showcase your product's true value without compromise.",
-    icon: <Globe className="w-8 h-8 relative z-10 text-white group-hover:scale-110 transition-transform duration-500" />,
-    features: ["Next.js & React", "High Conversion", "Responsive Design"],
-    color: "from-blue-500/20 to-blue-600/5",
-    borderColor: "group-hover:border-blue-500/50"
+    badge: "Popular",
+    title: "Web Development",
+    description:
+      "Custom, high-performance websites built with modern technologies. Fully responsive, SEO-friendly, and conversion-focused.",
+    price: "$899",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85",
+    hoverImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85",
+    imageAlt: "Modern website analytics dashboard displayed on a laptop",
   },
   {
     id: "app",
-    title: "App Architecture",
-    description: "User-friendly, cross-platform mobile experiences designed natively for seamless interactions and maximum user retention.",
-    icon: <Smartphone className="w-8 h-8 relative z-10 text-white group-hover:scale-110 transition-transform duration-500" />,
-    features: ["iOS & Android", "React Native", "Native UX/UI"],
-    color: "from-purple-500/20 to-purple-600/5",
-    borderColor: "group-hover:border-purple-500/50"
+    badge: "Trending",
+    title: "App Development",
+    description:
+      "Native and cross-platform mobile applications for iOS & Android. Beautiful UI, smooth performance, and scalable architecture.",
+    price: "$1,499",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=85",
+    hoverImage: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=85",
+    imageAlt: "Smartphone displaying a polished mobile application interface",
   },
   {
-    id: "ai",
+    id: "automation",
+    badge: "New",
+    title: "AI Automation",
+    description:
+      "Intelligent automation solutions powered by AI. Streamline workflows, reduce manual work, and boost business efficiency.",
+    price: "$1,299",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85",
+    hoverImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=85",
+    imageAlt: "Artificial intelligence visualization with connected workflow data",
+  },
+  {
+    id: "integration",
+    badge: "AI",
     title: "AI Integration",
-    description: "Intelligent automation, smart chatbots, and AI-driven logic that future-proof your business operations and reduce overhead.",
-    icon: <BrainCircuit className="w-8 h-8 relative z-10 text-white group-hover:scale-110 transition-transform duration-500" />,
-    features: ["Workflow Automation", "LLM Integration", "Smart Systems"],
-    color: "from-emerald-500/20 to-emerald-600/5",
-    borderColor: "group-hover:border-emerald-500/50"
-  }
+    description:
+      "Integrate powerful AI capabilities into your existing products, workflows, and business systems to create smarter experiences.",
+    price: "$999",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
+    hoverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=85",
+    imageAlt: "Server infrastructure representing connected business systems",
+  },
+];
+
+const processSteps = [
+  {
+    id: "strategize",
+    label: "Strategize",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 8v4l2.5 2.5" />
+      </svg>
+    ),
+    left: "6%",
+    top: "66%",
+  },
+  {
+    id: "design",
+    label: "Design",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 20h4l10-10-4-4L4 16v4z" />
+        <path d="M13 7l4 4" />
+      </svg>
+    ),
+    left: "22%",
+    top: "66%",
+  },
+  {
+    id: "develop",
+    label: "Develop",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 8l-4 4 4 4" />
+        <path d="M16 8l4 4-4 4" />
+      </svg>
+    ),
+    left: "38%",
+    top: "40%",
+  },
+  {
+    id: "test",
+    label: "Test",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 3h8" />
+        <path d="M10 3v4l-4 6a5 5 0 0 0 4 8h4a5 5 0 0 0 4-8l-4-6V3" />
+      </svg>
+    ),
+    left: "54%",
+    top: "12%",
+  },
+  {
+    id: "launch",
+    label: "Launch",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 15c4-8 8-10 14-10-1 6-3 10-11 14l-3-4z" />
+        <path d="M10 14l4-4" />
+      </svg>
+    ),
+    left: "70%",
+    top: "1%",
+  },
+  {
+    id: "iterate",
+    label: "Iterate",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 12a8 8 0 0 1 14-5" />
+        <path d="M18 3v4h-4" />
+        <path d="M20 12a8 8 0 0 1-14 5" />
+        <path d="M6 21v-4h4" />
+      </svg>
+    ),
+    left: "86%",
+    top: "-1%",
+  },
 ];
 
 export default function Services() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: { type: "spring", stiffness: 50, damping: 20 }
-    }
-  };
-
   return (
-    <section id="services" className="py-24 md:py-32 relative bg-zinc-950 border-t border-white/5">
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="mb-16 md:mb-24 lg:w-2/3">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
-              Built for your next<br className="hidden sm:block" /> stage of growth
-            </h2>
-            <p className="text-lg sm:text-xl text-white/60 font-light max-w-2xl leading-relaxed">
-              Get the legitimacy of a market leader, while staying lean and agile. We bring design, development, and intelligent automation together in one cohesive unit.
-            </p>
-          </motion.div>
+    <section
+      id="services"
+      className="services-section relative border-t border-white/5 bg-zinc-950 py-20 sm:py-24 md:py-28"
+    >
+      <div className="container relative z-10 mx-auto max-w-7xl px-6">
+        <div className="mb-10 max-w-3xl sm:mb-14 md:mb-16">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
+            What we do
+          </p>
+          <h2 className="mb-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl">
+            Technology built for what&apos;s next.
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+            From digital products to intelligent workflows, we turn ambitious
+            ideas into reliable solutions that move your business forward.
+          </p>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-        >
+        <div className="services-grid grid grid-cols-1 items-stretch md:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
-            <motion.div
-              key={service.id}
-              variants={cardVariants}
-              whileHover={{ y: -10 }}
-              className={`group relative overflow-hidden rounded-3xl bg-[#0a0a0c] border border-white/10 p-8 sm:p-10 transition-all duration-500 ${service.borderColor} shadow-xl hover:shadow-2xl`}
-            >
-              {/* Animated glass backlight */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className={`absolute -top-32 -right-32 w-64 h-64 bg-gradient-to-br ${service.color} blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
-              
-              <div className="w-16 h-16 rounded-2xl bg-zinc-900/80 border border-white/10 flex items-center justify-center mb-8 relative shadow-inner overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                {service.icon}
+            <article id={`service-${service.id}`} key={service.id} className="service-card flex h-full flex-col">
+              <div className="service-image relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.imageAlt}
+                  fill
+                  sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 25vw"
+                  className="service-image-layer service-image-primary object-cover"
+                />
+                <Image
+                  src={service.hoverImage}
+                  alt=""
+                  aria-hidden="true"
+                  fill
+                  sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 25vw"
+                  className="service-image-layer service-image-secondary object-cover"
+                />
+                <span className="service-badge absolute bottom-4 left-4">
+                  {service.badge}
+                </span>
               </div>
 
-              <h3 className="text-2xl font-bold mb-4 relative z-10">{service.title}</h3>
-              <p className="text-white/60 mb-8 leading-relaxed relative z-10 min-h-[80px] text-sm sm:text-base">
-                {service.description}
-              </p>
+              <div className="service-card-content flex flex-1 flex-col">
+                <h3 className="mb-2 text-xl font-semibold tracking-tight text-white sm:text-[1.35rem]">
+                  {service.title}
+                </h3>
+                <p className="service-description text-sm leading-5 text-zinc-400">
+                  {service.description}
+                </p>
 
-              <ul className="space-y-4 relative z-10 mt-auto border-t border-white/5 pt-6">
-                {service.features.map((feature, i) => (
-                  <motion.li 
-                    key={i} 
-                    className="flex items-center gap-3 text-sm text-white/70 font-medium"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white/80 transition-colors duration-300" />
-                    <span className="group-hover:text-white transition-colors duration-300">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+                <div className="mt-auto pt-4">
+                  <p className="text-sm text-zinc-400">
+                    Starting from{" "}
+                    <span className="font-semibold text-white">{service.price}</span>
+                  </p>
+                </div>
+              </div>
+            </article>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="services-process-panel mt-14 md:mt-20 rounded-3xl border border-white/10 bg-gradient-to-br from-[#071226] via-[#07192f] to-[#070d18] p-7 md:p-12 overflow-hidden relative">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-16 left-[10%] w-56 h-56 bg-blue-500/15 blur-[100px]" />
+            <div className="absolute top-8 right-[8%] w-56 h-56 bg-emerald-400/10 blur-[100px]" />
+            <div className="absolute bottom-0 left-1/3 w-40 h-40 bg-sky-400/10 blur-[90px]" />
+          </div>
+
+          <div className="relative z-10 text-center mx-auto max-w-4xl">
+            <p className="text-[11px] sm:text-xs tracking-[0.28em] text-white/55 font-semibold uppercase mb-4">Our Process</p>
+            <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-5">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-emerald-200">
+                HOW WE BUILD SOFTWARE THAT DELIVERS RESULTS
+              </span>
+            </h3>
+            <p className="text-white/65 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+              Driven by innovation and excellence. Our process is simple yet powerful, delivering robust and highly effective results every time.
+            </p>
+          </div>
+
+          <div className="relative z-10 mt-12 md:mt-14">
+            <div className="md:hidden relative overflow-x-auto pb-3">
+              <div className="relative min-w-[640px] h-[130px] px-3">
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 640 130"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="processNeonPathMobile" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.75" />
+                      <stop offset="55%" stopColor="#38bdf8" stopOpacity="0.95" />
+                      <stop offset="100%" stopColor="#34d399" stopOpacity="0.95" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M16 106 C118 132, 206 96, 306 56 C402 18, 520 10, 624 34"
+                    stroke="url(#processNeonPathMobile)"
+                    strokeWidth="3"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+
+                {processSteps.map((step, index) => {
+                  const mobileLeft = 7 + index * 17.5;
+                  const mobileTop = 69 - index * 8.5;
+                  return (
+                    <div
+                      key={step.id}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 text-center"
+                      style={{ left: `${mobileLeft}%`, top: `${mobileTop}%` }}
+                    >
+                      <div className="mx-auto w-10 h-10 rounded-xl border border-white/20 bg-[#081020]/90 flex items-center justify-center shadow-[0_0_20px_rgba(56,189,248,0.2)]">
+                        <span className="text-sky-100">{step.icon}</span>
+                      </div>
+                      <p className="mt-1.5 text-xs text-white/85 font-medium">{step.label}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="hidden md:block relative h-[280px] lg:h-[320px]">
+              <svg
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 1200 360"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="processNeonPath" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.75" />
+                    <stop offset="55%" stopColor="#38bdf8" stopOpacity="0.95" />
+                    <stop offset="100%" stopColor="#34d399" stopOpacity="0.95" />
+                  </linearGradient>
+                  <filter id="lineGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="7" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path
+                  d="M40 290 C238 358, 410 232, 602 126 C788 28, 998 24, 1160 96"
+                  stroke="url(#processNeonPath)"
+                  strokeWidth="4"
+                  fill="none"
+                  filter="url(#lineGlow)"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M40 290 C238 358, 410 232, 602 126 C788 28, 998 24, 1160 96"
+                  stroke="rgba(186,230,253,0.95)"
+                  strokeWidth="1.8"
+                  fill="none"
+                  strokeLinecap="round"
+                  pathLength={1}
+                  className="process-path-draw"
+                />
+              </svg>
+
+              <div
+                aria-hidden="true"
+                className="process-glow-sweep absolute top-[43%] left-[-18%] w-[40%] h-[2px] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent blur-[1px]"
+              />
+
+              {processSteps.map((step, index) => {
+                return (
+                  <div
+                    key={step.id}
+                    className="process-step absolute -translate-x-1/2 -translate-y-1/2 text-center group"
+                    style={{
+                      left: step.left,
+                      top: step.top,
+                      animationDelay: `${index * 0.08}s`,
+                    }}
+                  >
+                    <div className="mx-auto w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl border border-white/20 bg-[#081020]/85 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.2)] group-hover:shadow-[0_0_38px_rgba(52,211,153,0.26)] transition-all duration-300">
+                      <span className="text-sky-100 group-hover:text-emerald-200 transition-colors duration-300">{step.icon}</span>
+                    </div>
+                    <p className="mt-2.5 text-xs lg:text-sm text-white/85 group-hover:text-white transition-colors duration-300 font-medium">
+                      {step.label}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
