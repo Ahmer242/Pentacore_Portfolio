@@ -51,7 +51,7 @@ export default function Footer() {
                 <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.65 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.22a2 2 0 0 1 2.11-.45c.84.31 1.72.53 2.62.65A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span className="text-sm font-medium">+92 334 5226644</span>
+                <span className="text-sm font-medium">+92 334 2238324</span>
               </a>
               <a href="https://wa.me/923345226644" className="h-11 px-4 rounded-full border border-white/20 flex items-center gap-3 text-white/70 hover:border-cyan-500 hover:bg-cyan-100 hover:text-black hover:shadow-xl hover:shadow-cyan-500/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

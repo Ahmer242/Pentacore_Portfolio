@@ -19,8 +19,7 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-3xl md:text-4xl font-semibold text-white">Privacy Policy</h2>
               <p className="mt-2 text-white/60">Effective Date: August 2025</p>
               <p className="mt-4 leading-relaxed">
-                At Pentacore Solution (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or
-                &quot;us&quot;), we value your trust and are
+                At Pentacore Solution , we value your trust and are
                 committed to protecting your privacy. This Privacy Policy explains how we handle
                 information collected through our website and services.
               </p>
@@ -161,7 +160,7 @@ export default function PrivacyPolicyPage() {
                       </svg>
                     </span>
                     <p className="leading-relaxed">
-                      <span className="text-white font-medium">Phone: </span>+92 3345226644
+                      <span className="text-white font-medium">Phone: </span>+92 3342238324
                     </p>
                   </li>
                   <li className="flex items-center gap-3">

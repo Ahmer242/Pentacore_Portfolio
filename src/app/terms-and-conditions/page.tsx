@@ -19,8 +19,7 @@ export default function TermsAndConditionsPage() {
             <h2 className="text-3xl md:text-4xl font-semibold text-white">Terms and Conditions</h2>
             <p className="mt-2 text-white/60">Effective Date: August 2025</p>
             <p className="mt-4 leading-relaxed">
-              Welcome to Pentacore Solution (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or
-              &quot;us&quot;). By accessing or using
+              Welcome to Pentacore Solution . By accessing or using
               our website and services, you agree to these Terms of Use. If you do not agree, please do
               not use our website or services.
             </p>
@@ -140,7 +139,7 @@ export default function TermsAndConditionsPage() {
                     </svg>
                   </span>
                   <p className="leading-relaxed">
-                    <span className="text-white font-medium">Phone: </span>+92 3345226644
+                    <span className="text-white font-medium">Phone: </span>+92 3342238324
                   </p>
                 </li>
                 <li className="flex items-center gap-3">
